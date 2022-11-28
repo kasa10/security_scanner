@@ -12,6 +12,7 @@ for app in winapps.list_installed():
 
 #%%
 #x=[]
+f = open('dangerous.txt','w',encoding='utf-8')
 for i in range(0,len(df['ID'])):
     for n in range(0,len(apps)):
         if df['Name'][i]==apps[n][0]:
@@ -19,9 +20,21 @@ for i in range(0,len(df['ID'])):
             if df['Желательное'][i]==0:
                 print(df['Name'][i],'|| Является нежелательным ПО || Рекомендация: ', df['Рекомендация'][i])
                 print('Уровень опасности: ', df['Уровень опасности'][i])
+                print('                                                  ')
+                print(df['Name'][i],'|| Является нежелательным ПО || Рекомендация: ', df['Рекомендация'][i], file=f)
+                print('Уровень опасности: ', df['Уровень опасности'][i], file=f)
+                print('                                                  ', file=f)
                 continue
 
             if df['Версия ПО'][i]!=apps[n][1]:
                 print(df['Name'][i], '|| Версия ПО уязвима || Рекомендация: ', df['Рекомендация'][i])
                 print('Уровень опасности: ', df['Уровень опасности'][i])
+                print('                                                  ')
+                print(df['Name'][i], '|| Версия ПО уязвима || Рекомендация: ', df['Рекомендация'][i], file=f)
+                print('Уровень опасности: ', df['Уровень опасности'][i], file=f)
+                print('                                                  ', file=f)
                 continue
+
+
+
+f.close()
